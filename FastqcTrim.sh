@@ -17,7 +17,7 @@ fastqc SRR453566_yeast_rnaseq.fq.gz
 ls -ltr
 
 # open results of fastqc analysis in chrome
-google-chrome SRR453566_yeast_rnaseq_fastqc.html &
+google-chrome SRR453566_yeast_rnaseq_fastqc.html
 
 # trim the reads, adding --fastqc performs another analysis of the reads
 trim_galore –-fastqc SRR453566_yeast_rnaseq.fq.gz
@@ -27,3 +27,6 @@ trim_galore SRR453566_yeast_rnaseq.fq.gz
 
 #then run the report again
 fastqc SRR453566_yeast_rnaseq_trimmed.fq.gz
+
+# open results in google chrome
+google-chrome SRR453566_yeast_rnaseq_trimmed_fastqc.html
