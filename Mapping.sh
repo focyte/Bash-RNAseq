@@ -14,3 +14,4 @@ hisat2 -x yeast_index --known-splicesite-infile yeast_splice_sites.txt -p 2 -U S
 samtools view -bS SRR453566_yeast_rnaseq_trimmed.sam > SRR453566_yeast_rnaseq_trimmed.bam
 
 samtools sort SRR453566_yeast_rnaseq_trimmed.bam -o SRR453566_yeast_rnaseq_trimmed.sorted 
+samtools index SRR453566_yeast_rnaseq_trimmed.sorted 
