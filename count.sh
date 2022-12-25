@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt install subread
 
 featureCounts -T 4 -s 2 \
