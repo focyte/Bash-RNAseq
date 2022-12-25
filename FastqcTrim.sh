@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install the required tools
 sudo apt-get -y install hisat2
 sudo apt-get -y install samtools
