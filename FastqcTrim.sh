@@ -8,6 +8,7 @@ pip install cutadapt
 sudo apt install fastqc
 curl -fsSL https://github.com/FelixKrueger/TrimGalore/archive/0.6.6.tar.gz -o trim_galore.tar.gz
 tar xvzf trim_galore.tar.gz
+sudo apt-get install rna-star
 
 # navigate to the folder
 cd ./Documents/RNASeq_Course
