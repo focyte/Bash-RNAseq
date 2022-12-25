@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # use file yeast_genome.fa to creat an index file for hisat2
 hisat2-build yeast_genome.fa yeast_index
 
