@@ -12,6 +12,9 @@ head yeast_splice_sites.txt
 # run hisat
 hisat2 -x yeast_index --known-splicesite-infile yeast_splice_sites.txt -p 2 -U SRR453566_yeast_rnaseq_trimmed.fq.gz -S SRR453566_yeast_rnaseq_trimmed.sam 
 
+# run hisat human
+hisat2 -x GCA_000001405.15_GRCh38_full_analysis_set --known-splicesite-infile human_splice_sites.txt -p 6 -U ERR9921112_trimmed.fq.gz -S ERR9921112_trimmed.sam
+
 # convert the very large .sam file into a smaller .bam file
 samtools view -bS SRR453566_yeast_rnaseq_trimmed.sam > SRR453566_yeast_rnaseq_trimmed.bam
 
