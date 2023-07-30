@@ -23,4 +23,4 @@ ls -ltr
 find . -maxdepth 1 -name \*fastq.gz -exec trim_galore {} \;
 
 #then run the report again
-find . -maxdepth 1 -name \*trimmed_fastq.gz -exec fastqc {} \;
+find . -maxdepth 1 -name \*trimmed.fq.gz -exec fastqc {} \;
