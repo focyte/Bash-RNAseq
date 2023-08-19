@@ -9,13 +9,13 @@ fi
 INPUT_DIR="$1"
 OUTPUT_DIR="$2"
 
-# Loop through each fq.gz file in the input directory
-for fastq_file in "$INPUT_DIR"/*.fq.gz; do
-    fastqc "$fastq_file" -o "$OUTPUT_DIR"
+# Loop through each fastq.gz file in the input directory
+for fastq_file in "$INPUT_DIR"/*.fastq.gz; do
+        trim_galore "$fastq_file"
 
     if [ $? -eq 0 ]; then
-        echo "Analysed $fastq_file"
+        echo "Trimmed $fastq_file"
     else
-        echo "Error analysing $fastq_file"
+        echo "Error trimming $fastq_file"
     fi
 done
