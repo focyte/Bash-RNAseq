@@ -1,7 +1,16 @@
 #!/bin/bash
-index_path="./Index/GCA_000001405.15_GRCh38_full_analysis_set"
-splice_sites="./Index/human_splice_sites.txt"
 
-for file in ./*trimmed.fq.gz; do
-    hisat2 -x "$index_path" --known-splicesite-infile "$splice_sites" -p 8 -U "$file" -S "${file%trimmed.fq.gz}.sam"
+# Check for the correct number of arguments
+if [ "$#" -ne 4 ]; then
+    echo "Usage: $0 <input_dir> <output_dir> <index_path> <splice_sites_file>"
+    exit 1
+fi
+
+INPUT_DIR="$1"
+OUTPUT_DIR="$2"
+INDEX_PATH="$3"
+SPLICE_SITES="$4"
+
+for file in "$INPUT_DIR"/*trimmed.fq.gz; do
+    hisat2 -x "$INDEX_PATH" --known-splicesite-infile "$SPLICE_SITES" -p 8 -U "$file" -S "${OUTPUT_DIR}/${file##*/trimmed.fq.gz}.sam"
 done
