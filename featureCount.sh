@@ -16,7 +16,8 @@ for sorted_bam_file in "$INPUT_DIR"/*_sorted.bam; do
     featurecounts_file="${sorted_bam_file%_sorted.bam}_featurecounts.txt"
 
     # Run featureCounts with the specified options
-    featureCounts -T 4 -s 2 -a "$GTF_FILE" -o "$OUTPUT_DIR/$featurecounts_file" "$sorted_bam_file"
+    featureCounts -T 4 -s 2 -a "$GTF_FILE"/GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.gtf -o "$featurecounts_file" "$sorted_bam_file"
+
 
     # Check if featureCounts was successful
     if [ $? -eq 0 ]; then

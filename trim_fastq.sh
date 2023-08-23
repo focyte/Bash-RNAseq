@@ -11,7 +11,7 @@ OUTPUT_DIR="$2"
 
 # Loop through each fastq.gz file in the input directory
 for fastq_file in "$INPUT_DIR"/*.fastq.gz; do
-        trim_galore "$fastq_file"
+        trim_galore "$fastq_file" -o "$OUTPUT_DIR"
 
     if [ $? -eq 0 ]; then
         echo "Trimmed $fastq_file"

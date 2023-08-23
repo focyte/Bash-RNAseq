@@ -11,8 +11,11 @@ OUTPUT_DIR="$2"
 
 # Loop through each BAM file in the input directory
 for bam_file in "$INPUT_DIR"/*.bam; do
+    # Extract the filename from the full path
+    bam_filename=$(basename "$bam_file")
+
     # Generate the output sorted BAM filename by adding "_sorted" to the base name
-    sorted_bam_file="${bam_file%.bam}_sorted.bam"
+    sorted_bam_file="${bam_filename%.bam}_sorted.bam"
 
     # Run samtools sort to sort the BAM file
     samtools sort "$bam_file" -o "$OUTPUT_DIR/$sorted_bam_file"
