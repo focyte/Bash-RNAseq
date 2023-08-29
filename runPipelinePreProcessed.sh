@@ -13,7 +13,7 @@ INDEX_PATH="$3"
 SPLICE_SITES="$4"
 
 # Run individual scripts
-bash fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"
+
 bash map2.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
 bash samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
 bash indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
