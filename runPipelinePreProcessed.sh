@@ -15,6 +15,6 @@ SPLICE_SITES="$4"
 # Run individual scripts
 
 bash map2.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
-bash samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
+bash samToBam2.sh "$INPUT_DIR" "$OUTPUT_DIR"
 bash indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
 bash featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR"
