@@ -29,7 +29,10 @@ This GitHub repository contains two distinct pipelines for RNA Sequencing analys
 1. **FastQC Analysis**
 
    - Script: `fastqc.sh`
-   - Usage: `bash fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+```bash 
+fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"
+```
 
 2. **Trimming with Trimgalore**
 
