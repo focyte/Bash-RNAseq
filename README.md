@@ -30,40 +30,57 @@ This GitHub repository contains two distinct pipelines for RNA Sequencing analys
 
    - Script: `fastqc.sh`
    - Usage: 
-```bash 
-fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"
-```
+    ```bash 
+    fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"
+    ```
 
 2. **Trimming with Trimgalore**
 
    - Script: `trim_fastq.sh`
-   - Usage: `bash trim_fastq.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   trim_fastq.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
 
 3. **FastQC Analysis on Trimmed Data**
 
    - Script: `fastqcTrimmed.sh`
-   - Usage: `bash fastqcTrimmed.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   fastqcTrimmed.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
 
 4. **Mapping to Human Genome using Hisat2**
 
    - Script: `map.sh`
-   - Usage: `bash map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"`
+   - Usage: 
+   ```bash 
+   map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
+   ```
 
 5. **Conversion of SAM to BAM**
 
    - Script: `samToBam.sh`
-   - Usage: `bash samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
 
 6. **Indexing BAM Files**
 
    - Script: `indexBam.sh`
-   - Usage: `bash indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
 
 7. **Counting Reads for Each Gene Feature using FeatureCounts**
 
    - Script: `featureCount.sh`
-   - Usage: `bash featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR"`
-
+   - Usage: 
+   ```bash 
+   featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR" "$GTF_FILE"
+   ```
 
 ## PrProcessed Pipeline
 
@@ -76,31 +93,47 @@ fastqc.sh "$INPUT_DIR" "$OUTPUT_DIR"
 1. **Mapping to Human Genome using Hisat2**
 
    - Script: `map2.sh`
-   - Usage: `bash map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"`
+   - Usage: 
+   ```bash 
+   map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
+   ```
 
 2. **Conversion of SAM to BAM**
 
-   - Script: `samToBam2.sh`
-   - Usage: `bash samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Script: `samToBam.sh2`
+   - Usage: 
+   ```bash 
+   samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
+
 
 3. **Indexing BAM Files**
 
    - Script: `indexBam.sh`
-   - Usage: `bash indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
+   ```
 
 4. **Counting Reads for Each Gene Feature using FeatureCounts**
 
    - Script: `featureCount.sh`
-   - Usage: `bash featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR"`
+   - Usage: 
+   ```bash 
+   featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR" "$GTF_FILE"
+   ```
 
 ## Downstream Analysis
 
 ### Python Script for Merging FeatureCounts Results
 
-Script: merge_featureCounts.py
-Usage: python merge_featureCounts.py
+    - Script: `merge_featureCounts.py`
+    - Usage: 
+    ```python 
+    merge_featureCounts.py
+    ```
 
 ### R Script for DSeq2 Analysis
 
-Script: DSeq2_analysis.R
-Usage: Execute in an R environment
+    - Script: `DSeq2_analysis.R`
+    - Usage: `Execute in an R environment`
