@@ -130,7 +130,7 @@ This GitHub repository contains two distinct pipelines for RNA Sequencing analys
    - Script: `merge_featureCounts.py`
    - Usage: 
    ```python 
-    merge_featureCounts.py
+    merge_featureCounts.py file_paths output_path
    ```
 
 ### R Script for DSeq2 Analysis
