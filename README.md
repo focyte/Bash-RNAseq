@@ -1,6 +1,6 @@
 # RNA Sequencing Analysis Pipelines
 
-This GitHub repository contains two distinct pipelines for RNA Sequencing analysis: one for raw RNA sequencing read data (**RawReads**) and the other for pre-processed data (**PreProcessed**). Each pipeline consists of a series of Bash scripts that automate key steps in RNA sequencing data analysis, along with additional Python and R scripts for downstream analysis.
+This GitHub repository contains two pipelines for RNA Sequencing analysis: one for raw RNA sequencing read data (**RawReads**) and the other for pre-processed data (**PreProcessed**). Each pipeline consists of a series of Bash scripts that automate key steps in RNA sequencing data analysis, along with additional Python and R scripts for downstream analysis.
 
 ## RawReads Pipeline
 
@@ -15,9 +15,9 @@ This GitHub repository contains two distinct pipelines for RNA Sequencing analys
 
 #### Files
 - Sequencing read data in the fastq.gz format
-- Index files for the reference genome of interest, in this case Human Genome hg38.
-- Ideally perform your own indexing using STAR aligner or similar tool.
-- A .gtf file of annotated features of your indexed genome 
+- Index files for the reference genome of interest, in this case Human Genome hg38
+- Ideally perform your own indexing using software such as [STAR] (https://github.com/alexdobin/STAR) aligner
+- A .gtf file of annotated features for your indexed genome 
 - human_splice_sites file for your indexed genome
 
 ### Usage
