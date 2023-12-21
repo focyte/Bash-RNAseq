@@ -18,7 +18,7 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
 - Index files for the reference genome of interest, in this case Human Genome hg38
 - Ideally perform your own indexing using software such as [STAR](https://github.com/alexdobin/STAR) aligner
 - A .gtf file of annotated features for your indexed genome 
-- human_splice_sites file for your indexed genome
+- Splice Site file for your indexed genome to improve alignment accuracy across exon-exon boundaries
 
 ### Usage
 ```bash
