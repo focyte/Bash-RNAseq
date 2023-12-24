@@ -15,7 +15,7 @@ GTF_FILE="$5"
 
 # Run individual scripts
 
-bash map2.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
-bash samToBam2.sh "$INPUT_DIR" "$OUTPUT_DIR"
+bash mapPreP.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
+bash samToBamPreP.sh "$INPUT_DIR" "$OUTPUT_DIR"
 bash indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
 bash featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR" "$GTF_FILE"
