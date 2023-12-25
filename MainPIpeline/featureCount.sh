@@ -6,6 +6,7 @@ if [ "$#" -ne 3 ]; then
     exit 1
 fi
 
+# Assign arguments to variables
 INPUT_DIR="$1"
 OUTPUT_DIR="$2"
 GTF_FILE="$5"
@@ -15,7 +16,7 @@ for sorted_bam_file in "$INPUT_DIR"/*_sorted.bam; do
     # Generate the output featureCounts file name by replacing "_sorted.bam" with "_featurecounts.txt"
     featurecounts_file="${sorted_bam_file%_sorted.bam}_featurecounts.txt"
 
-    # Run featureCounts with the specified options, added the -M flag The -M flag will generate multi-level feature annotation lines, which should help in maintaining a consistent format in the output files.
+    # Run featureCounts with the specified options. Default strand is reverse -s 2. The -M flag will generate multi-level feature annotation lines, which should help in maintaining a consistent format in the output files.
     featureCounts -T 4 -s 2 -a "$GTF_FILE"GCA_000001405.15_GRCh38_full_analysis_set.refseq_annotation.gtf -o "$featurecounts_file" -M "$sorted_bam_file"
 
 

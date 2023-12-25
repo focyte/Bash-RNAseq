@@ -6,11 +6,13 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
+# Assign arguments to variables
 INPUT_DIR="$1"
 OUTPUT_DIR="$2"
 
 # Loop through each SAM file in the input directory
 for sam_file in "$INPUT_DIR"/*trimmed.sam; do
+
     # Generate the output BAM filename by replacing the .sam extension with .bam
     sam_filename=$(basename "$sam_file")
     bam_filename="${sam_filename%.sam}.bam"
@@ -18,7 +20,7 @@ for sam_file in "$INPUT_DIR"/*trimmed.sam; do
     # Run samtools view to convert SAM to BAM
     samtools view -bS "$sam_file" > "$OUTPUT_DIR/$bam_filename"
 
-    # Optionally, you can check if the command was successful and provide some feedback
+    # Check if the conversion was successful
     if [ $? -eq 0 ]; then
         echo "Converted $sam_file to $OUTPUT_DIR/$bam_filename"
     else

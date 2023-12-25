@@ -6,6 +6,7 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
+# Assign arguments to variables
 INPUT_DIR="$1"
 OUTPUT_DIR="$2"
 
@@ -14,17 +15,17 @@ for bam_file in "$INPUT_DIR"/*.bam; do
     # Extract the filename from the full path
     bam_filename=$(basename "$bam_file")
 
-    # Generate the output sorted BAM filename by adding "_sorted" to the base name
+    # Generate the output sorted BAM filename by adding "_sorted" to the base filename
     sorted_bam_file="${bam_filename%.bam}_sorted.bam"
 
-    # Run samtools sort to sort the BAM file
+    # Run samtools 'sort' to sort the BAM file
     samtools sort "$bam_file" -o "$OUTPUT_DIR/$sorted_bam_file"
 
     # Check if the sorting was successful
     if [ $? -eq 0 ]; then
         echo "Sorted $bam_file to $OUTPUT_DIR/$sorted_bam_file"
 
-        # Run samtools index to create an index for the sorted BAM file
+        # Run samtools 'index' to create an index for the sorted BAM file
         samtools index "$OUTPUT_DIR/$sorted_bam_file"
 
         # Check if indexing was successful
