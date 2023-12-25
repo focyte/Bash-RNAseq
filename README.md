@@ -1,11 +1,10 @@
 # RNA Sequencing Analysis Pipelines
 
-This GitHub repository contains two pipelines for RNA Sequencing analysis: one for raw RNA sequencing read data (**RawReads**) and the other for pre-processed data (**PreProcessed**). Each pipeline consists of a series of Bash scripts that automate key steps in RNA sequencing data analysis, along with additional Python and R scripts for downstream analysis.
+This GitHub repository contains two pipelines for RNA Sequencing analysis: one for initial anlysis of RNA sequencing read data (**Quality Control**) and the other for alignment and mapping of reads to reference genome and counting of features (genes) (**Main Pipeline**). Each pipeline consists of a series of Bash scripts that automate key steps in RNA sequencing data analysis, along with additional Python and R scripts for downstream analysis.
 
-## RawReads Pipeline
+## Requirements
 
-### Requirements
-#### Software
+### Software
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 - [Cutadapt](https://cutadapt.readthedocs.io/en/stable/)
 - [TrimGalore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
@@ -13,16 +12,17 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
 - [Samtools](http://www.htslib.org/)
 - [FeatureCounts](http://subread.sourceforge.net/)
 
-#### Files
+### Files
 - Sequencing read data in the fastq.gz format
 - Index files for the reference genome of interest, in this case Human Genome hg38
 - Ideally perform your own indexing using software such as [STAR](https://github.com/alexdobin/STAR) aligner
 - A .gtf file of annotated features for your indexed genome 
 - Splice Site file for your indexed genome to improve alignment accuracy across exon-exon boundaries
 
-### Usage
+## Quality Control Usage
+
 ```bash
-./runPipeline.sh <input_dir> <output_dir> <index_path> <splice_sites_file> <gtf_file>
+./runQC.sh <input_dir> <output_dir>
 ```
 ### Individual Steps
 
@@ -50,49 +50,18 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
    fastqcTrimmed.sh "$INPUT_DIR" "$OUTPUT_DIR"
    ```
 
-4. **Mapping to Human Genome using Hisat2**
+## Main Pipeline Usage
 
-   - Script: `map.sh`
-   - Usage: 
-   ```bash 
-   map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
-   ```
-
-5. **Conversion of SAM to BAM**
-
-   - Script: `samToBam.sh`
-   - Usage: 
-   ```bash 
-   samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
-   ```
-
-6. **Indexing BAM Files**
-
-   - Script: `indexBam.sh`
-   - Usage: 
-   ```bash 
-   indexBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
-   ```
-
-7. **Counting Reads for Each Gene Feature using FeatureCounts**
-
-   - Script: `featureCount.sh`
-   - Usage: 
-   ```bash 
-   featureCount.sh "$INPUT_DIR" "$OUTPUT_DIR" "$GTF_FILE"
-   ```
-
-## PrProcessed Pipeline
-
-### Usage
 ```bash
-./runPipelinePreP.sh <input_dir> <output_dir> <index_path> <splice_sites_file> <gtf_file>
+./runPipeline.sh <input_dir> <output_dir> <index_path> <splice_sites_file> <gtf_file> <read_type> <data_type>
 ```
-### Individual Steps
 
 1. **Mapping to Human Genome using Hisat2**
 
-   - Script: `map2.sh`
+   - Script: `mapPP.sh, mapPU.sh, mapRP.sh, mapRE.sh`
+   - When specifying the read_type and data_type in runPipeline.sh, IF statements determine which mapping script to use
+   - Read_types = Unpaired OR Paired
+   - Data_types = Raw OR Processed (Raw will use files processed by runQC.sh in the Quality Control step)
    - Usage: 
    ```bash 
    map.sh "$INPUT_DIR" "$OUTPUT_DIR" "$INDEX_PATH" "$SPLICE_SITES"
@@ -100,12 +69,11 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
 
 2. **Conversion of SAM to BAM**
 
-   - Script: `samToBam.sh2`
+   - Script: `samToBam.sh`
    - Usage: 
    ```bash 
    samToBam.sh "$INPUT_DIR" "$OUTPUT_DIR"
    ```
-
 
 3. **Indexing BAM Files**
 
