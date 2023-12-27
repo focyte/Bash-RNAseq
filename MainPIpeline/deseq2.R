@@ -20,12 +20,11 @@ dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design =
 # Perform DESeq2 analysis
 dds <- DESeq(dds)
 
-# Differential expression analysis
-# You can specify contrasts of interest based on your experimental design
-# For example, comparing Group1 to Group2:
+# Differential expression analysis 
+# Comparing Group1 to Group2:
 results <- results(dds, contrast = c("Group", "Group2", "Group1"))
 
-# Extract significant differentially expressed genes based on a threshold (e.g., adjusted p-value < 0.05)
+# Extract significant differentially expressed genes based on a set threshold
 significant_genes <- subset(results, padj < 0.05)
 # View the top differentially expressed genes
 top_genes <- head(significant_genes, n = 10)
