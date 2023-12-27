@@ -8,13 +8,13 @@ countData <- countData[, -1]
 
 
 # Create a data frame to store the sample group information
-# Replace 'Group' with the actual column name in your file that specifies the sample groups
+# Replace 'Group1&2' your sample groups
 colData <- data.frame(
-  Group = factor(c("Group1", "Group1", "Group2", "Group2", "Group2")),
+  Group = factor(c("Group1", "Group1", "Group1", "Group2", "Group2", "Group2")),
   row.names = colnames(countData)
 )
 
-# Create a DESeqDataSet object
+# Create a DESeqDataSet object (dds)
 dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ Group)
 
 # Perform DESeq2 analysis
