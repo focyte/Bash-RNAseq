@@ -9,7 +9,7 @@ fi
 # Assign arguments to variables
 INPUT_DIR="$1"
 OUTPUT_DIR="$2"
-GTF_FILE="$5"
+GTF_FILE="$3"
 
 # Loop through each sorted BAM file in the input directory
 for sorted_bam_file in "$INPUT_DIR"/*_sorted.bam; do
