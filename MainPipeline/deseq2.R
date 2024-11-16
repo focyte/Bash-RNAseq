@@ -56,3 +56,26 @@ ggplot(pcaData, aes(x=PC1, y=PC2, color=Group)) +
   ylab(paste0("PC2: ", percentVar[2], "% variance")) +
   theme_minimal() +
   ggtitle("PCA plot of DESeq2 Transformed Data")
+
+# Volcano Plot
+
+# Annotate the results data from the DESeq2 results 
+df1 = results
+df1$diffexpressed <- "NO"
+df1$diffexpressed[df1$log2FoldChange > 0.6 & df1$pvalue < 0.05] <- "UP"
+df1$diffexpressed[df1$log2FoldChange < -0.6 & df1$pvalue < 0.05] <- "DOWN"
+
+# Plot the data
+p <- ggplot(data=df1, aes(x=log2FoldChange, y=-log10(pvalue), col=diffexpressed)) + geom_point() + theme_minimal()
+p2 <- p + geom_vline(xintercept=c(-0.6, 0.6), col="red") +
+  geom_hline(yintercept=-log10(0.05), col="red")
+mycolors <- c("blue", "red", "black")
+names(mycolors) <- c("DOWN", "UP", "NO")
+p3 <- p2 + scale_colour_manual(values = mycolors)
+
+df1$delabel <- NA
+df1$delabel[df1$diffexpressed != "NO"] <- df1$X[df1$diffexpressed != "NO"]
+
+ggplot(data=df1, aes(x=log2FoldChange, y=-log10(pvalue), col=diffexpressed, label=delabel)) + 
+  geom_point() + 
+  theme_minimal()
