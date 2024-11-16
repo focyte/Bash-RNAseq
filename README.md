@@ -2,6 +2,21 @@
 
 This GitHub repository contains two pipelines for RNA Sequencing analysis: one for initial anlysis of RNA sequencing read data (**Quality Control**) and the other for alignment and mapping of reads to reference genome and counting of features (genes) (**Main Pipeline**). Each pipeline consists of a series of Bash scripts that automate key steps in RNA sequencing data analysis, along with additional Python and R scripts for downstream analysis.
 
+---
+
+## Table of Contents
+1. [Requirements](#requirements)
+2. [Pipeline](#pipeline)
+    - [Quality Control Usage](#quality-control-usage)
+    - [Main Pipeline Usage](#main-pipeline-usage)
+    - [Downstream Analysis](#downstream-analysis)
+    - [Results](#results)
+3. [How to Run](#how-to-run)
+4. [Results](#results)
+
+---
+
+
 ## Requirements
 
 ### Software
@@ -18,6 +33,8 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
 - Ideally perform your own indexing using software such as [STAR](https://github.com/alexdobin/STAR) aligner
 - A .gtf file of annotated features for your indexed genome 
 - Splice Site file for your indexed genome to improve alignment accuracy across exon-exon boundaries
+
+## Pipeline
 
 ## Quality Control Usage
 
@@ -105,3 +122,5 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
 
    - Script: `DSeq2_analysis.R`
    - Usage: `Execute in an R environment`
+
+## Results
