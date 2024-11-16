@@ -124,3 +124,5 @@ This GitHub repository contains two pipelines for RNA Sequencing analysis: one f
    - Usage: `Execute in an R environment`
 
 ## Results
+
+![Figure]([https://github.com/focyte/Bash-RNAseq/blob/main/Figure.png]) 
